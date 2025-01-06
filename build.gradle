@@ -53,3 +53,87 @@ publishing {
         }
     }
 }
+
+task postPublishedPluginToSlack {
+    doLast {
+        def webhookUrl = 'https://hooks.slack.com/services/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'
+        def message = '{"text": "Project is published! "}'
+
+        // Create the URL object
+        def url = new URL(webhookUrl)
+
+        // Open a connection
+        def connection = url.openConnection() as HttpURLConnection
+        connection.requestMethod = 'POST'
+        connection.setRequestProperty('Content-Type', 'application/json')
+        connection.doOutput = true
+
+        // Send the message as JSON payload
+        connection.outputStream.withWriter { writer ->
+            writer.write(message)
+        }
+
+        // Check the response code
+        def responseCode = connection.responseCode
+        println "Response Code: ${responseCode}"
+
+        connection.disconnect()
+    }
+}
+
+sendMail {
+    smtpServer {
+        host "smtp.gmail.com"
+        port 587
+        user "la_rezzoug@esi.dz"
+        password "wsnd hhim azbw idkf"
+    }
+    mail {
+        from "la_rezzoug@esi.dz"
+        to "la_rezzoug@esi.dz"
+
+        body "TP5 OGL IS WORKING!"
+    }
+}
+
+task postPublishedPluginToSlack {
+    doLast {
+        def webhookUrl = 'https://hooks.slack.com/services/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'
+        def message = '{"text": "Project is published! "}'
+
+        // Create the URL object
+        def url = new URL(webhookUrl)
+
+        // Open a connection
+        def connection = url.openConnection() as HttpURLConnection
+        connection.requestMethod = 'POST'
+        connection.setRequestProperty('Content-Type', 'application/json')
+        connection.doOutput = true
+
+        // Send the message as JSON payload
+        connection.outputStream.withWriter { writer ->
+            writer.write(message)
+        }
+
+        // Check the response code
+        def responseCode = connection.responseCode
+        println "Response Code: ${responseCode}"
+
+        connection.disconnect()
+    }
+}
+
+sendMail {
+    smtpServer {
+        host "smtp.gmail.com"
+        port 587
+        user "la_rezzoug@esi.dz"
+        password "wsnd hhim azbw idkf"
+    }
+    mail {
+        from "la_rezzoug@esi.dz"
+        to "la_rezzoug@esi.dz"
+
+        body "TP5 OGL IS WORKING!"
+    }
+}
