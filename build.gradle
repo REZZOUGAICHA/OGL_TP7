@@ -40,3 +40,21 @@ jacocoTestReport {
         html.required = true
     }
 }
+
+publishing {
+    repositories {
+        maven {
+            url 'https://mymavenrepo.com/repo/vp1VCZQFfWiXPP72vsv4/'
+            credentials {
+                username 'myMavenRepo'
+                password 'azerty'
+            }
+        }
+    }
+
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
