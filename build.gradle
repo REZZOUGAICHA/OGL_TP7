@@ -41,20 +41,15 @@ jacocoTestReport {
     }
 }
 
+
 publishing {
     repositories {
         maven {
-            url 'https://mymavenrepo.com/repo/vp1VCZQFfWiXPP72vsv4/'
+            url System.getenv('MAVEN_REPO_URL')
             credentials {
-                username 'myMavenRepo'
-                password 'azerty'
+                username System.getenv('MAVEN_REPO_USERNAME')
+                password System.getenv('MAVEN_REPO_PASSWORD')
             }
-        }
-    }
-
-    publications {
-        maven(MavenPublication) {
-            from components.java
         }
     }
 }
