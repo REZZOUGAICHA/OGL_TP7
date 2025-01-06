@@ -1,9 +1,18 @@
-pipeline    {
+pipeline {
     agent any
+
     stages {
-        stage('test') {
+        stage('Test') {
             steps {
-                bat './gradlew test'
+                script {
+                    bat './gradlew test'
+                    bat './gradlew jacocoTestReport'
+
+                    // Archive test results
+                    archiveArtifacts artifacts: 'build/reports/cucumber/**/*.*', fingerprint: true
+                    archiveArtifacts artifacts: 'build/reports/tests/test/**/*.*', fingerprint: true
+
+                }
             }
         }
 
