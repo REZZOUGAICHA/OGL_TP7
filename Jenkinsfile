@@ -6,6 +6,7 @@ pipeline {
             steps {
                 script {
                     bat './gradlew test'
+                    bat './gradlew jacocoTestReport'
 
                     // Archive test results
                     archiveArtifacts artifacts: 'build/reports/cucumber/**/*.*', fingerprint: true
